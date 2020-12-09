@@ -14,9 +14,15 @@ app.get('/resetPassword', (req, res) => {
     return res.sendFile(__dirname + '/frontend/resetPassword.html');
 });
 
+<<<<<<< HEAD
 app.get('/information', (req, res) => {
     return res.sendFile(__dirname + '/frontend/information.html');
 });
+=======
+app.get('/resetPassword', (req, res) => {
+    res.sendFile(__dirname + '/frontend/index.html')
+})
+>>>>>>> 9e8ed70351dfabc2e2858aafbfd79fe8e7c6db3c
 
 app.get('/createMember', (req, res) => {
     return res.sendFile(__dirname + '/frontend/createMember.html');
