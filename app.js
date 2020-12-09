@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     return res.sendFile(__dirname + '/frontend/resetPassword.html');
 });
 
-app.get('/', (req, res) => {
+app.get('/resetPassword', (req, res) => {
     res.sendFile(__dirname + '/frontend/index.html')
 })
 
