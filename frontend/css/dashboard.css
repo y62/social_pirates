@@ -25,7 +25,7 @@ li,ul{
 .login-header {
     display: inline-block;
     width: 100%;
-    background: #white;
+    background: #ffffff;
 }
 
 .login-signup {
@@ -78,7 +78,7 @@ li,ul{
 }
 
 .login-header .nav-tabs > li.active {
-    border-bottom: 6px solid #white;
+    border-bottom: 6px solid #ffffff;
 }
 
 .login-inner h1 {
@@ -698,4 +698,4 @@ header {
     max-width: 130px;
     padding: 16px 0 17px;
     width: 100%;
-}
+}}}
