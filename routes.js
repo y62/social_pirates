@@ -6,7 +6,7 @@ const database = require('./database');
 const createError = require("http-errors");
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 app.use(express.static("frontend"));
 app.use(bodyParser.urlencoded({extended : true}));
