@@ -195,3 +195,8 @@ color: #000000;
 .text-uppercase {
   letter-spacing: 0.2em;
 }
+
+.chat-box {
+  height: 30em;
+  width: 61em;
+}

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Social Pirat / Login</title>
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <!-- Styles.min CSS 4.5 CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
     <!-- Bootstrap 4.5 CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Style CSS -->
@@ -52,8 +53,6 @@
 <!-- Collums-->
 <section>
     <div class="container py-5">
-
-
         <div class="row text-center align-items-end">
             <!-- Arr Ya Comming collums-->
             <!-- Pirates on board! -->
@@ -82,55 +81,30 @@
                 <div class="bg-white p-5 rounded-lg shadow">
                     <br>
                     <h4 class="h4 font-weight-bold">Pirates in the water: </h4>
-
                     <div class="custom-separator my-4 mx-auto bg-primary"></div>
-
                     <h6>Liste her med medlemmer/frivillige som ikke kommer</h6>
-
                 </div>
             </div>
+        </section>
+
+
             <!-- END -->
-        </div>
-        <h1><br></h1>
-    </div>
-</section>
+
 
 <!-- Chat window! -->
-<div class="chat">
-    <div id="sidebar" class="chat__sidebar">
-    </div>
-    <div class="chat__main">
-        <div id="messages" class="chat__messages"></div>
-
-        <div class="compose">
-            <form id="message-form">
-                <input name="message" placeholder="Message" required autocomplete="off">
-                <button>Send</button>
-            </form>
-        </div>
+<section>
+    <div class="container py-5">
+        <div class="row text-center align-items-end">
+            <div class="col-lg-6 mb-5 mb-lg-0"></div>
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <h4 class="h4 font-weight-bold">Ohøj pirat, hop ombord i chatten!</h4>
+                        <iframe class="chat-box" src="https://nodejs-exam-fun-chat.herokuapp.com/"></iframe>
+                    </div>
+         </div>
     </div>
 </div>
-
-<script id="message-template" type="text/html">
-    <div class="message">
-        <p>
-            <span class="message__name">{{username}}</span>
-            <span class="message__meta">{{createdAt}}</span>
-        </p>
-        <p>{{message}}</p>
-    </div>
-</script>
-
-
-<script id="sidebar-template" type="text/html">
-    <h2 class="room-title">{{room}}</h2>
-    <h3 class="list-title">Users</h3>
-    <ul class="users">
-        {{#users}}
-        <li>{{username}}</li>
-        {{/users}}
-    </ul>
-</script>
+</div>
+</section>
 
 <!-- Chat window End! -->
 
@@ -138,7 +112,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/chat.js"></script>
+<script src="/chat/public/js/chat.js"></script>
 <!-- jQuery -->
 <script src="js/jquery-3.5.1.min.js"></script>
 <!-- Bootstrap 4.5 JS -->
@@ -147,6 +121,7 @@
 <script src="js/popper.min.js"></script>
 <!-- Font Awesome -->
 <script src="js/all.min.js"></script>
+
 
 <!-- End Script Source Files -->
 </body>
