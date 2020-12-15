@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 const database = require('./database');
+const createError = require("http-errors");
 
 const app = express();
 const port = 8080;
@@ -33,19 +34,29 @@ app.post('/auth', (req, res) => {
                 req.session.email = email;
                 res.redirect('/home');
             } else {
-                res.send('Forkert Email eller Adgangskode');
+                res.redirect('/');
+                res.end();
             }
-            res.end();
         });
-
     } else {
         res.send('Indtast Email / Adgangskode');
         res.end();
     }
 });
 
+app.get('/logout',function(req,res){
+    req.session.destroy((err) => {
+        if(err){
+            console.log(err);
+        }
+        else
+        {
+            res.redirect('/');
+        }
+    });
+});
+
 app.get('/', (req, res) => {
-    req.session.loggedin = false;
     res.sendFile(path.join(__dirname + '/frontend/index.html'));
 });
 
@@ -77,10 +88,9 @@ app.get('/home', (req, res) => {
     if (req.session.loggedin) {
         return res.sendFile(__dirname + '/frontend/home.html');
     } else {
-        res.send('Husk at logge ind!');
+        res.sendFile(__dirname + '/frontend/index.html');
     }
-    });
-
+});
 
 app.post('/saveM',(req, res) => {
 
@@ -116,7 +126,6 @@ app.get('/members',(req, res) => {
             throw err;
         }
     });
-
 });
 // UPDATE
 // update a member
@@ -130,7 +139,6 @@ app.get('/update/:memberId',(req, res) => {
             member_id: result [0],
 
         });
-
     });
 });
 
@@ -165,14 +173,7 @@ app.get('/deleteMember/:member_id',(req, res) => {
         // console.log(query)
         res.redirect('/members');
     });
-
 });
-
-
-
-
-
-
 
 app.listen(port, () => {
     console.log("Server is running on port: ", port)
