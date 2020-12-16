@@ -118,8 +118,7 @@ app.get('/add', (req, res) => {
         });
 });
 
-
-app.post('/save',  (req, res) => {
+app.post('/save_member',  (req, res) => {
     const name = req.body.name;
     const telephone = req.body.telephone;
     const email = req.body.email;
@@ -158,7 +157,6 @@ app.post('/updated',(req, res) => {
     let query = connection.query(sql,(err, results) => {
         if(err) throw err;
         res.redirect('/members');
-
     });
 });
 
