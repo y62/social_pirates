@@ -3,10 +3,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 const database = require('./database');
-const createError = require("http-errors");
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT1 || 3000;
 
 app.use(express.static("frontend"));
 app.use(bodyParser.urlencoded({extended : true}));
