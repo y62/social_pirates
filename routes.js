@@ -114,7 +114,7 @@ app.get('/members',(req, res) => {
 
 app.get('/add', (req, res) => {
         res.render('sign_up', {
-            title: 'BLIV EN PIRAT'
+            title: "BLIV EN PIRAT"
         });
 });
 
@@ -200,4 +200,25 @@ app.get('/events',(req, res) => {
         res.redirect('/')
     }
    
+});
+
+app.get('/createEvent', (req, res) => {
+    if (req.session.loggedin) {
+        res.render('create_event', {
+            title: "Opret Coding Pirates Event"
+        }) 
+    }
+})
+
+app.post('/save_event',  (req, res) => {
+    const event_name = req.body.event_name;
+    const event_date = req.body.event_date;
+    const event_time = req.body.event_time;
+    
+    const data = {event_name, event_date, event_time};
+    let sql = "INSERT INTO events SET ?";
+    connection.query(sql, data,(err, results) => {
+        if(err) throw err;
+        res.redirect('/events');
+    });
 });
