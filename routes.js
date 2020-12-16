@@ -5,7 +5,7 @@ const session = require('express-session');
 const database = require('./database');
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = 8080;
 
 app.use(express.static("frontend"));
 app.use(bodyParser.urlencoded({extended : true}));
@@ -15,13 +15,11 @@ app.set('views',path.join(__dirname,'frontend/views'));
 app.set('view engine', 'ejs');
 
 
-
 app.use(session({
     secret: 'secret',
     resave: true,
     saveUninitialized: true
 }));
-
 
 app.post('/auth', (req, res) => {
     const email = req.body.email;
