@@ -91,7 +91,6 @@ app.get('/home', (req, res) => {
 
 
 app.get('/members',(req, res) => {
-
     let sql = "SELECT * FROM members";
     let query = connection.query(sql, (err, rows) => {
         if (!err) {

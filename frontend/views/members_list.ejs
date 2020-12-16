@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Fetch using MySQL and Node.js</title>
+  <style> 
+    table, td, th { 
+     border: 1px solid #ddd; 
+     text-align: left; 
+    } 
+    table { 
+     border-collapse: collapse; 
+     width: 50%; 
+    } 
+    .table-data{ 
+     position: relative; 
+     left:150px; 
+     top:100px; 
+    } 
+    th, td { 
+     padding: 15px; 
+    } 
+    </style>
+</head>
+<body>
+    <div class="table-data">
+<h2>Display Data using Node.js & MySQL</h2>
+    <table border="1">
+        <tr>
+            <th>S.N</th>
+            <th>Full Name</th>
+            <th>Email Address</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        
+        <%
+        if(members.length!=0){
+        var i=1;
+        members.forEach(function(data){
+        %>
+        <tr>
+            <td><%=i; %></td>
+            <td><%=data.member_id %></td>
+            <td><%=data.name %></td>
+            <td><%=data.telephone %></td>
+            <td><%=data.email %></td>
+            <td><a href="/members/edit/<%=data.id%>">Edit</a></td>
+            <td><a href="/members/delete/<%=data.id%>">Delete</a></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+    </div>
+</body>
+</html>
