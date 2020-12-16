@@ -5,7 +5,7 @@ const session = require('express-session');
 const database = require('./database');
 
 const app = express();
-const port = process.env.PORT1 || 8080;
+const port = process.env.PORT || 8080;
 
 app.use(express.static("frontend"));
 app.use(bodyParser.urlencoded({extended : true}));
