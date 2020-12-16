@@ -91,7 +91,8 @@ app.get('/home', (req, res) => {
 
 
 app.get('/members',(req, res) => {
-    let sql = "SELECT * FROM members";
+    if (req.session.loggedin) {
+         let sql = "SELECT * FROM members";
     let query = connection.query(sql, (err, rows) => {
         if (!err) {
             res.render('members_list', {
@@ -102,6 +103,11 @@ app.get('/members',(req, res) => {
             throw err;
         }
     });
+    }
+    else {
+        res.redirect('/')
+    }
+   
 });
 
 
@@ -141,8 +147,6 @@ app.get('/update/:memberId',(req, res) => {
 
 app.post('/updated',(req, res) => {
 
-
-
     const member_id = req.body.member_id;
     let sql = `UPDATE members SET
             first_name = '"+ req.body.first_name +"',
@@ -154,7 +158,6 @@ app.post('/updated',(req, res) => {
     let query = connection.query(sql,(err, results) => {
         if(err) throw err;
         res.redirect('/members');
-
 
     });
 });
