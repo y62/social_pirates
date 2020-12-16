@@ -68,7 +68,7 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="/events" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="/frontend/contact.html" class="nav-link">Events</a></li>
                 <li class="nav-item"><a href="/frontend/information.html" class="nav-link">Frivillige</a></li>
                 <li class="nav-item"><a href="/members" class="nav-link">Medlemmer</a></li>
                 <a href="/logout" class="btn btn-danger" role="button" aria-pressed="true">Log ud </a>
@@ -79,28 +79,27 @@
 
 <!-- Data table window! -->
 <div class="table-data">
-  <h2>Medlemmer</h2>
+  <h2>Events</h2>
       <table border="1">
           <tr>
               <th>Id</th>
               <th>Navn</th>
-              <th>Telefon</th>
-              <th>Email</th>
-             
+              <th>Dato</th>
+              <th>Tid</th>
           </tr>
           
           <%
-          if(members.length!=0){
+          if(events.length!=0){
           var i=1;
-          members.forEach(function(data){
+          events.forEach(function(data){
           %>
           <tr>
-              <td><%=data.member_id %></td>
-              <td><%=data.name %></td>
-              <td><%=data.telephone %></td>
-              <td><%=data.email %></td>
-              <td><a href="/members/edit/<%=data.id%>" class="btn btn-warning" role="button" aria-pressed="true">Edit</a>
-              <a href="/members/delete/<%=data.id%>" class="btn btn-danger" role="button" aria-pressed="true">Delete</a></td>
+              <td><%=data.event_id %></td>
+              <td><%=data.event_name %></td>
+              <td><%=data.event_date %></td>
+              <td><%=data.event_time %></td>
+              <td><a href="/events/edit/<%=data.id%>" class="btn btn-warning" role="button" aria-pressed="true">Edit</a>
+              <a href="/events/delete/<%=data.id%>" class="btn btn-danger" role="button" aria-pressed="true">Delete</a></td>
           </tr>
           <%  i++; }) %>
           <% } else{ %>

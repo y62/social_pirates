@@ -178,3 +178,26 @@ app.get('/deleteMember/:member_id',(req, res) => {
 app.listen(port, () => {
     console.log("Server is running on port: ", port)
 });
+
+
+
+
+app.get('/events',(req, res) => {
+    if (req.session.loggedin) {
+         let sql = "SELECT * FROM events";
+    let query = connection.query(sql, (err, rows) => {
+        if (!err) {
+            res.render('events_page', {
+                title: "Events_page",
+                events: rows
+            });
+        } else {
+            throw err;
+        }
+    });
+    }
+    else {
+        res.redirect('/')
+    }
+   
+});
