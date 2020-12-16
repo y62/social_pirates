@@ -2,17 +2,14 @@
 <html lang="en">
 <head>
     <title><%= title %></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Social Pirat / Admin Home</title>
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <!-- Bootstrap 4.5 CSS -->
-    <link rel="stylesheet" href="frontend/css/bootstrap.min.css">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="frontend/css/style.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
 
@@ -57,38 +54,32 @@
             <div class="col">
                 <div class="col-md-6 col-sm-12">
                     <h1><br><br></h1>
-                    <form>
-                        <h2><%= title %></h2>
-                        <h1>Opret nyt medlems login!<br></h1>
+                        <h1><%= title %></h1>
                         <h3>Indtast medlems oplysninger:</h3>
-                        <form action="/saveM" method="post">
+                        <form action="/save" method="post">
                             <div class="form-group">
-                                <label for="name">Fornavn:</label>
-                                <input type="text" class="form-control" id="first_name" placeholder="Fornavn" name="first_name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Efternavn:</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Efternavn" name="last_name" required>
+                                <label for="name">Navn:</label>
+                                <input type="text" class="form-control" id="name" placeholder="Navn" name="name" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="phone">Telefon nummer:</label>
+                                <label for="phone">Tlf / Mobil: </label>
                                 <input type="text" class="form-control" id="telephone" placeholder="Telefon nummer" name="telephone" required>
                             </div>
+
                             <div class="form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
                             </div>
+
                             <div class="form-group">
-                                <div class="form-group">
                                     <label for="password">Password:</label>
                                     <input type="text" class="form-control" id="password" placeholder="password" name="password" required>
-                                </div>
+
                             </div>
-                            <a href="#" class="btn btn-success" role="button" aria-pressed="true">Opret medlem!</a>
-                            <a href="/frontend/index.html" class="btn btn-danger" role="button" aria-pressed="true">Tilbage</a>
+                            <button type="submit" class="btn btn-primary">Godkend</button>
+                            <a href="/" class="btn btn-danger" role="button" aria-pressed="true">Tilbage</a>
                         </form>
-                    </form>
                 </div>
             </div>
         </div>

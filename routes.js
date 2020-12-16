@@ -70,7 +70,7 @@ app.get('/resetPassword', (req, res) => {
 });
 
 app.get('/createMember', (req, res) => {
-    return res.sendFile(__dirname + '/frontend/views/createMember.ejs');
+    return res.sendFile(__dirname + '/frontend/views/sign_up.ejs');
 });
 
 app.get('/contact', (req, res) => {
@@ -89,27 +89,7 @@ app.get('/home', (req, res) => {
     }
 });
 
-app.post('/saveM',(req, res) => {
 
-    let data = {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        telephone: req.body.telephone,
-        email: req.body.email,
-        password: req.body.password
-    };
-    let sql = "INSERT INTO members SET ?";
-
-    let query = connection.query(sql, data,(err, results) => {
-        if(err) throw err;
-        console.log(err);
-        res.redirect('/members');
-    });
-});
-
-//READ
-
-//read(get) all members
 app.get('/members',(req, res) => {
 
     let sql = "SELECT * FROM members";
@@ -124,8 +104,29 @@ app.get('/members',(req, res) => {
         }
     });
 });
-// UPDATE
-// update a member
+
+
+
+app.get('/add', (req, res) => {
+        res.render('sign_up', {
+            title: 'BLIV EN PIRAT'
+        });
+});
+
+
+app.post('/save',  (req, res) => {
+    const name = req.body.name;
+    const telephone = req.body.telephone;
+    const email = req.body.email;
+    const password = req.body.password;
+    const data = {name, telephone, email, password};
+    let sql = "INSERT INTO members SET ?";
+    connection.query(sql, data,(err, results) => {
+        if(err) throw err;
+        res.redirect('/');
+    });
+});
+
 app.get('/update/:memberId',(req, res) => {
     const member_id = req.params.member_id;
     let sql = `SELECT * from members where member_id = ${member_id}`;
