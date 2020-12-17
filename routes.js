@@ -159,7 +159,7 @@ app.post('/update',(req, res) => {
 app.get('/deleteMember/:member_id',(req, res) => {
 
     const member_id = req.params.member_id;
-    let sql = `DELETE from members where member_id = ${member_id}`;
+    let sql = `DELETE from members where id = ${member_id}`;
     let query = connection.query(sql, (err, result) => {
         if (err) throw err;
         // console.log(query)

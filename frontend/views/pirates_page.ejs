@@ -93,15 +93,15 @@
           <%
           if(members.length!=0){
           var i=1;
-          members.forEach(function(member){
+          members.forEach(function(data){
           %>
           <tr>
-              <td><%=member.member_id %></td>
-              <td><%=member.name %></td>
-              <td><%=member.telephone %></td>
-              <td><%=member.email %></td>
-              <td><a href="/members/edit/<%=member.member_id%>" class="btn btn-warning" role="button" aria-pressed="true">Edit</a>
-              <a href="deleteMember/<%=member.member_id%>" class="btn btn-danger" role="button" aria-pressed="true">Delete</a></td>
+              <td><%=data.member_id %></td>
+              <td><%=data.name %></td>
+              <td><%=data.telephone %></td>
+              <td><%=data.email %></td>
+              <td><a href="/update/<%=data.id%>" class="btn btn-warning" role="button" aria-pressed="true">Edit</a>
+              <a href="/deleteMember/<%=data.id%>" class="btn btn-danger" role="button" aria-pressed="true">Delete</a></td>
           </tr>
           <%  i++; }) %>
           <% } else{ %>
