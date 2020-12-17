@@ -22,6 +22,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
+
 app.post('/auth', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -157,7 +158,6 @@ app.post('/update',(req, res) => {
 
 // delete
 app.get('/deleteMember/:member_id',(req, res) => {
-
     const member_id = req.params.member_id;
     let sql = `DELETE from members where id = ${member_id}`;
     let query = connection.query(sql, (err, result) => {
@@ -172,8 +172,6 @@ app.listen(port, () => {
 });
 
 
-
-
 app.get('/events',(req, res) => {
     if (req.session.loggedin) {
          let sql = "SELECT * FROM events";
@@ -181,6 +179,26 @@ app.get('/events',(req, res) => {
         if (!err) {
             res.render('events_page', {
                 title: "Events_page",
+                events: rows
+            });
+        } else {
+            throw err;
+        }
+    });
+    }
+    else {
+        res.redirect('/')
+    }
+   
+});
+
+app.get('/update_event',(req, res) => {
+    if (req.session.loggedin) {
+         let sql = "SELECT * FROM events";
+    let query = connection.query(sql, (err, rows) => {
+        if (!err) {
+            res.render('update_event', {
+                title: "Update Event",
                 events: rows
             });
         } else {
@@ -214,3 +232,26 @@ app.post('/save_event',  (req, res) => {
         res.redirect('/events');
     });
 });
+
+// delete event
+app.get('/deleteEvent/:event_id',(req, res) => {
+    const event_id = req.params.event_id;
+    let sql = `DELETE from events where id = ${event_id}`;
+    let query = connection.query(sql, (err, result) => {
+        if (err) throw err;
+        // console.log(query)
+        res.redirect('/events');
+    });
+});
+
+app.post('/updateEvent',(req, res) => {
+    const event_Id = req.body.event_id;
+    let sql = "update events SET event_name='"+req.body.event_name+"',  event_date='"+req.body.event_date+"',  event_time='"+req.body.event_time+"' where id ="+event_Id;
+    let query = connection.query(sql,(err, results) => {
+        if(err) throw err;
+        res.redirect('/events');
+    });
+});
+
+
+

@@ -99,8 +99,8 @@
               <td><%=data.event_name %></td>
               <td><%=data.event_date %></td>
               <td><%=data.event_time %></td>
-              <td><a href="/events/edit/<%=data.id%>" class="btn btn-warning" role="button" aria-pressed="true">Edit</a>
-              <a href="/events/delete/<%=data.id%>" class="btn btn-danger" role="button" aria-pressed="true">Delete</a></td>
+              <td><a href="/updateEvent/<%=data.id%>" class="btn btn-warning" role="button" aria-pressed="true">Opdater</a>
+              <a href="/deleteEvent/<%=data.id%>" class="btn btn-danger" role="button" aria-pressed="true">Slet</a></td>
           </tr>
           <%  i++; }) %>
           <% } else{ %>
