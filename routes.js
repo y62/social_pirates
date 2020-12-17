@@ -128,7 +128,7 @@ app.post('/save_member',  (req, res) => {
     let sql = "INSERT INTO members SET ?";
     connection.query(sql, data,(err, results) => {
         if(err) throw err;
-        res.redirect('/');
+        res.redirect('/pirates_page');
     });
 });
 
@@ -150,7 +150,7 @@ app.post('/update',(req, res) => {
     let sql = "update members SET name='"+req.body.name+"',  email='"+req.body.email+"',  telephone='"+req.body.telephone+"', password='"+req.body.password+"' where id ="+memberId;
     let query = connection.query(sql,(err, results) => {
         if(err) throw err;
-        res.redirect('/');
+        res.redirect('/pirates_page');
     });
 });
 

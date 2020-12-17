@@ -2,39 +2,111 @@
 <html lang="en">
 <head>
     <title><%= title %></title>
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+	<!-- Bootstrap 4.5 CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Style CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
+    <div class="container"><a href="/">
+		<img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Piratey%2C_vector_version.svg" width="10%" height="10%" style="float: left;" alt="Pirate Image" />
+	   </a>
+	</div>	
 
-<div class="container">
-    <h2><%= title %></h2>
-    <form action="/update" method="post">
-        <input type="hidden" value="<%= user.id %>" name="id">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="email" placeholder="Navn" value="<%= user.name %>" name="name" required>
+<!-- Top Bar -->
+<div class="top-bar">
+    <div class="container">
+        <div class="col-12 text-right">
         </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Email" value="<%= user.email %>" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone No:</label>
-            <input type="text" class="form-control" id="pwd" placeholder="Tlf / Mobil" value="<%= user.telephone %>" name="telephone" required>
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone No:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Kode" value="<%= user.password %>" name="password" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>
 
+<!-- End Top Bar -->
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-light navbar-expand-lg">
+    <div class="container">
+        <h1>SOCIAL PIRATE |</h1>
+        <h1><br></h1>
+
+        <p>En del af Coding Pirates Hørsholm<p>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="/events" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="/pirates_page" class="nav-link">Pirater</a></li>
+                <a href="/logout" class="btn btn-danger" role="button" aria-pressed="true">Log ud </a>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="top-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="col-md-6 col-sm-12">
+                    <h1><br><br></h1>
+                        <h1><%= title %></h1>
+                        <div class="container">
+                            <form action="/update" method="post">
+                                <input type="hidden" value="<%= user.id %>" name="id">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" id="email" placeholder="Navn" value="<%= user.name %>" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" value="<%= user.email %>" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone No:</label>
+                                    <input type="text" class="form-control" id="pwd" placeholder="Tlf / Mobil" value="<%= user.telephone %>" name="telephone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone No:</label>
+                                    <input type="password" class="form-control" id="pwd" placeholder="Kode" value="<%= user.password %>" name="password" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">Godkend</button>
+                                <a href="/pirates_page" class="btn btn-danger" role="button" aria-pressed="true">Tilbage</a>
+                            </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- jQuery -->
+<script src="js/jquery-3.5.1.min.js"></script>
+<!-- Bootstrap 4.5 JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Popper JS -->
+<script src="js/popper.min.js"></script>
+<!-- Font Awesome -->
+<script src="js/all.min.js"></script>
+
+<!-- End Script Source Files -->
 </body>
 </html>

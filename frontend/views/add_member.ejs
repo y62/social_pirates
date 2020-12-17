@@ -42,7 +42,7 @@
         <h1>SOCIAL PIRATE |</h1>
         <h1><br></h1>
 
-        <p>En del af Coding Pirats Hørsholm<p>
+        <p>En del af Coding Pirates Hørsholm<p>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
@@ -65,7 +65,7 @@
                 <div class="col-md-6 col-sm-12">
                     <h1><br><br></h1>
                         <h1><%= title %></h1>
-                        <h3>Indtast medlems oplysninger:</h3>
+                        <div class="container">
                         <form action="/save_member" method="post">
                             <div class="form-group">
                                 <label for="name">Navn:</label>
@@ -85,11 +85,11 @@
                             <div class="form-group">
                                     <label for="password">Password:</label>
                                     <input type="password" class="form-control" id="password" placeholder="password" name="password" required>
-
                             </div>
                             <button type="submit" class="btn btn-primary">Godkend</button>
-                            <a href="/members" class="btn btn-danger" role="button" aria-pressed="true">Tilbage</a>
+                            <a href="/pirates_page" class="btn btn-danger" role="button" aria-pressed="true">Tilbage</a>
                         </form>
+                </div>
                 </div>
             </div>
         </div>
