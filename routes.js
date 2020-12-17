@@ -90,12 +90,12 @@ app.get('/home', (req, res) => {
 });
 
 
-app.get('/members',(req, res) => {
+app.get('/pirates_page',(req, res) => {
     if (req.session.loggedin) {
          let sql = "SELECT * FROM members";
     let query = connection.query(sql, (err, rows) => {
         if (!err) {
-            res.render('members_list', {
+            res.render('pirates_page', {
                 title: "Members_list",
                 members: rows
             });
@@ -112,9 +112,9 @@ app.get('/members',(req, res) => {
 
 
 
-app.get('/add', (req, res) => {
-        res.render('sign_up', {
-            title: "BLIV EN PIRAT"
+app.get('/add_member', (req, res) => {
+        res.render('add_member', {
+            title: "Opret Nyt Medlem!"
         });
 });
 
