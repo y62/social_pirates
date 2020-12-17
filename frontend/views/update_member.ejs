@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--   <link rel="stylesheet" type="text/css" href="./stylesheet.css"> -->
+
+</head>
+<body>
+<div class="container">
+    <h2><%= title %></h2>
+    <form action="/update/:userId'" method="post">
+        <div>
+            <% members.forEach(function(member){ %>
+            <input type="hidden" value="<%=member.member_id %>" name="userId">
+
+            <div class="form-group">
+                <label for="name">Navn:</label>
+                <input type="text" class="form-control" id="name" placeholder="Insæt Brugernavn" value="<%=member.name %>" name="userName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Telefon:</label>
+                <input type="text" class="form-control" id="name" placeholder="Telefon" value="<%=member.telephone %>" name="telephone" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Email:</label>
+                <input type="text" class="form-control" id="name" placeholder="Email" value="<%=member.email %>" name="email" required>
+            </div>
+            <% }); %>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
