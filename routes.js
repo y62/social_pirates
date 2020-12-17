@@ -4,6 +4,7 @@ const path = require('path');
 const session = require('express-session');
 const database = require('./database');
 
+
 const app = express();
 const port = 8080;
 
@@ -169,7 +170,7 @@ app.get('/deleteMember/:member_id',(req, res) => {
     let query = connection.query(sql, (err, result) => {
         if (err) throw err;
         // console.log(query)
-        res.redirect('/members');
+        res.redirect('/pirates_page');
     });
 });
 
