@@ -66,22 +66,26 @@
                     <h1><br><br></h1>
                         <h1><%= title %></h1>
                         <div class="container">
-                            <form action="/update" method="post">
+                            <form action="/updateMember" method="post">
                                 <input type="hidden" value="<%= user.id %>" name="id">
                                 <div class="form-group">
-                                    <label for="event_name">Name:</label>
-                                    <input type="text" class="form-control" id="event_name" placeholder="Event navn" value="<%= user.event_name %>" name="name" required>
+                                    <label for="name">Navn:</label>
+                                    <input type="text" class="form-control" id="email" placeholder="Navn" value="<%= user.name %>" name="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email:</label>
-                                    <input type="date" class="form-control" id="event_date" placeholder="Email" value="<%= user.email %>" name="email" required>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" value="<%= user.email %>" name="email" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="time">Telefon nummer:</label>
-                                    <input type="time" class="form-control" id="event_time" placeholder="Tlf / Mobil" value="<%= user.telephone %>" name="telephone" required>
+                                    <label for="phone">Telefon nummer:</label>
+                                    <input type="text" class="form-control" id="pwd" placeholder="Tlf / Mobil" value="<%= user.telephone %>" name="telephone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Password:</label>
+                                    <input type="password" class="form-control" id="pwd" placeholder="Kode" value="<%= user.password %>" name="password" required>
                                 </div>
                                 <button type="submit" class="btn btn-success">Godkend</button>
-                                <a href="/pirates_page" class="btn btn-danger" role="button" aria-pressed="true">Tilbage</a>
+                                <a href="/events_page" class="btn btn-danger" role="button" aria-pressed="true">Tilbage</a>
                             </form>
                 </div>
                 </div>
