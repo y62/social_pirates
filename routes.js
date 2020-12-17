@@ -133,31 +133,24 @@ app.post('/save_member',  (req, res) => {
 });
 
 app.get('/update/:memberId',(req, res) => {
-    const member_id = req.params.member_id;
-    let sql = `SELECT * from members where member_id = ${member_id}`;
-    let query = connection.query(sql, (err, result) => {
-        if (err) throw err;
-        res.render('updateMember', {
-            title: "Edit member Info ",
-            member_id: result [0],
-
+    const memberId = req.params.memberId;
+    let sql = `Select * from members where id = ${memberId}`;
+    let query = connection.query(sql,(err, result) => {
+        if(err) throw err;
+        res.render('update_member', {
+            title : 'Opdater medlem',
+            user : result[0]
         });
     });
 });
 
-app.post('/updated',(req, res) => {
 
-    const member_id = req.body.member_id;
-    let sql = `UPDATE members SET
-            first_name = '"+ req.body.first_name +"',
-            last_name= '"+ req.body.last_name +"',
-            telephone = '"+ req.body.telephone +"',
-            email = '"+ req.body.email +"',
-            password = '"+ req.body.password
-            }+"' WHERE member_id = ${member_id};`;
+app.post('/update',(req, res) => {
+    const memberId = req.body.id;
+    let sql = "update members SET name='"+req.body.name+"',  email='"+req.body.email+"',  telephone='"+req.body.telephone+"', password='"+req.body.password+"' where id ="+memberId;
     let query = connection.query(sql,(err, results) => {
         if(err) throw err;
-        res.redirect('/members');
+        res.redirect('/');
     });
 });
 
