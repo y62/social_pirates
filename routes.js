@@ -8,7 +8,7 @@ const database = require('./database');
 const app = express();
 const port = 8080;
 
-app.use(express.static("frontend"));
+app.use(express.static("frontend/public"));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
@@ -56,27 +56,27 @@ app.get('/logout',function(req,res){
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/frontend/index.html'));
+    res.sendFile(path.join(__dirname + '/frontend/public/index.html'));
 });
 
 app.get('/resetPassword', (req, res) => {
-    return res.sendFile(__dirname + '/frontend/resetPassword.html');
+    return res.sendFile(__dirname + '/frontend/public/resetPassword.html');
 });
 
 app.get('/information', (req, res) => {
-    return res.sendFile(__dirname + '/frontend/information.html');
+    return res.sendFile(__dirname + '/frontend/public/information.html');
 });
 
 app.get('/resetPassword', (req, res) => {
-    res.sendFile(__dirname + '/frontend/index.html')
+    res.sendFile(__dirname + '/frontend/public/index.html')
 });
 
 app.get('/createMember', (req, res) => {
-    return res.sendFile(__dirname + '/frontend/views/sign_up.ejs');
+    return res.sendFile(__dirname + '/frontend/public/views/sign_up.ejs');
 });
 
 app.get('/contact', (req, res) => {
-    return res.sendFile(__dirname + '/frontend/contact.html');
+    return res.sendFile(__dirname + '/frontend/public/contact.html');
 });
 
 app.get('/adminHome', (req, res) => {
@@ -87,7 +87,7 @@ app.get('/home', (req, res) => {
     if (req.session.loggedin) {
         return res.sendFile(__dirname + '/frontend/home.html');
     } else {
-        res.sendFile(__dirname + '/frontend/index.html');
+        res.sendFile(__dirname + '/frontend/public/index.html');
     }
 });
 
