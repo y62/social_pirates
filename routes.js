@@ -139,7 +139,7 @@ app.get('/update/:memberId',(req, res) => {
     let query = connection.query(sql,(err, result) => {
         if(err) throw err;
         res.render('update_member', {
-            title : 'Opdater medlem',
+            title : 'Opdater Pirat Medlem!',
             user : result[0]
         });
     });
@@ -167,9 +167,6 @@ app.get('/deleteMember/:member_id',(req, res) => {
     });
 });
 
-app.listen(port, () => {
-    console.log("Server is running on port: ", port)
-});
 
 
 app.get('/events',(req, res) => {
@@ -192,25 +189,6 @@ app.get('/events',(req, res) => {
    
 });
 
-app.get('/update_event',(req, res) => {
-    if (req.session.loggedin) {
-         let sql = "SELECT * FROM events";
-    let query = connection.query(sql, (err, rows) => {
-        if (!err) {
-            res.render('update_event', {
-                title: "Update Event",
-                events: rows
-            });
-        } else {
-            throw err;
-        }
-    });
-    }
-    else {
-        res.redirect('/')
-    }
-   
-});
 
 app.get('/createEvent', (req, res) => {
     if (req.session.loggedin) {
@@ -244,14 +222,37 @@ app.get('/deleteEvent/:event_id',(req, res) => {
     });
 });
 
+app.get('/update_event/:event_id',(req, res) => {
+    const event_id = req.params.event_id;
+    if (req.session.loggedin) {
+         let sql = `SELECT * FROM events WHERE id =${event_id}`;
+         let query = connection.query(sql, (err, result) => {
+        if (!err) {
+            res.render('update_event', {
+                title: "Update Event",
+                event: result[0]
+            });
+        } else {
+            throw err;
+        }
+    });
+    }
+    else {
+        res.redirect('/')
+    }
+   
+});
+
 app.post('/updateEvent',(req, res) => {
-    const event_Id = req.body.event_id;
-    let sql = "update events SET event_name='"+req.body.event_name+"',  event_date='"+req.body.event_date+"',  event_time='"+req.body.event_time+"' where id ="+event_Id;
+    const event_Id = req.body.id;
+    let sql = "UPDATE events SET event_name='"+req.body.event_name+"',  event_date='"+req.body.event_date+"',  event_time='"+req.body.event_time+"' where id ="+event_Id;
     let query = connection.query(sql,(err, results) => {
         if(err) throw err;
         res.redirect('/events');
     });
 });
 
-
+app.listen(port, () => {
+    console.log("Server is running on port: ", port)
+});
 

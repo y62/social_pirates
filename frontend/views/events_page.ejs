@@ -68,7 +68,7 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="/frontend/contact.html" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="/events" class="nav-link">Events</a></li>
                 <li class="nav-item"><a href="/pirates_page" class="nav-link">Pirater</a></li>
                 <a href="/logout" class="btn btn-danger" role="button" aria-pressed="true">Log ud </a>
             </ul>
@@ -95,11 +95,11 @@
           events.forEach(function(data){
           %>
           <tr>
-              <td><%=data.event_id %></td>
+              <td><%=data.id %></td>
               <td><%=data.event_name %></td>
               <td><%=data.event_date %></td>
               <td><%=data.event_time %></td>
-              <td><a href="/updateEvent/<%=data.id%>" class="btn btn-warning" role="button" aria-pressed="true">Opdater</a>
+              <td><a href="/update_event/<%=data.id%>" class="btn btn-warning" role="button" aria-pressed="true">Opdater</a>
               <a href="/deleteEvent/<%=data.id%>" class="btn btn-danger" role="button" aria-pressed="true">Slet</a></td>
           </tr>
           <%  i++; }) %>

@@ -66,8 +66,8 @@
                     <h1><br><br></h1>
                         <h1><%= title %></h1>
                         <div class="container">
-                            <form action="/updateMember" method="post">
-                                <input type="hidden" value="<%= user.id %>" name="id">
+                            <form action="/update" method="post">
+                                 <input type="hidden" value="<%= user.id %>" name="id">
                                 <div class="form-group">
                                     <label for="name">Navn:</label>
                                     <input type="text" class="form-control" id="email" placeholder="Navn" value="<%= user.name %>" name="name" required>
@@ -85,7 +85,7 @@
                                     <input type="password" class="form-control" id="pwd" placeholder="Kode" value="<%= user.password %>" name="password" required>
                                 </div>
                                 <button type="submit" class="btn btn-success">Godkend</button>
-                                <a href="/events_page" class="btn btn-danger" role="button" aria-pressed="true">Tilbage</a>
+                                <a href="/pirates_page" class="btn btn-danger" role="button" aria-pressed="true">Tilbage</a>
                             </form>
                 </div>
                 </div>
