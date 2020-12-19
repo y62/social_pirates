@@ -82,17 +82,23 @@
     </div>
 </nav>   
 
-<a href="/add_member" class="btn btn-success btn-block p-2 shadow rounded-pill">Opret Nyt Medlem</a>	
+<div align="center" class="container">
+</a>
+<br><h2>Pirater i klubben!</h2><br>
+	
+
 
 <!-- Data table window! -->
-<div class="table-data">
-  <h2>Medlemmer</h2>
+
+ 
+
       <table border="1">
           <tr>
               <th>Id</th>
               <th>Navn</th>
               <th>Telefon</th>
               <th>Email</th>
+              <th>Muligheder</th>
           </tr>
           
           <%
@@ -115,6 +121,7 @@
               </tr>
           <% } %>
       </table>
+      <br><a href="/add_member" class=" btn-success p-2 shadow rounded-pill">Opret Nyt Medlem</a>
       </div>
 </body>
 </html>
