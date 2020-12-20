@@ -67,14 +67,6 @@ app.get('/information', (req, res) => {
     return res.sendFile(__dirname + '/frontend/public/information.html');
 });
 
-app.get('/resetPassword', (req, res) => {
-    res.sendFile(__dirname + '/frontend/public/index.html')
-});
-
-app.get('/createMember', (req, res) => {
-    return res.sendFile(__dirname + '/frontend/public/views/sign_up.ejs');
-});
-
 app.get('/contact', (req, res) => {
     return res.sendFile(__dirname + '/frontend/public/contact.html');
 });
@@ -251,6 +243,86 @@ app.post('/updateEvent',(req, res) => {
         res.redirect('/events');
     });
 });
+
+
+
+app.get('/volunteers_page',(req, res) => {
+    if (req.session.loggedin) {
+         let sql = "SELECT * FROM volunteers";
+    let query = connection.query(sql, (err, rows) => {
+        if (!err) {
+            res.render('volunteers_page', {
+                title: "Volunteers_list",
+                volunteers: rows
+            });
+        } else {
+            throw err;
+        }
+    });
+    }
+    else {
+        res.redirect('/')
+    }
+   
+});
+
+app.get('/add_volunteer', (req, res) => {
+    res.render('add_volunteer', {
+        title: "Opret ny frivillig!"
+    });
+});
+
+
+app.post('/save_volunteer',  (req, res) => {
+    const volunteer_first_name = req.body.volunteer_first_name;
+    const volunteer_last_name = req.body.volunteer_last_name;
+    const volunteer_telephone = req.body.volunteer_telephone;
+    const volunteer_email = req.body.volunteer_email;
+    const volunteer_password = req.body.volunteer_password;
+    const data = {volunteer_first_name, volunteer_last_name, volunteer_telephone, volunteer_email, volunteer_password};
+    let sql = "INSERT INTO volunteers SET ?";
+    connection.query(sql, data,(err, results) => {
+        if(err) throw err;
+        res.redirect('/volunteers_page');
+    });
+});
+
+
+// delete
+app.get('/deleteVolunteer/:volunteer_id',(req, res) => {
+    const volunteer_id = req.params.volunteer_id;
+    let sql = `DELETE from volunteers where id = ${volunteer_id}`;
+    let query = connection.query(sql, (err, result) => {
+        if (err) throw err;
+        // console.log(query)
+        res.redirect('/volunteers_page');
+    });
+});
+
+
+app.get('/updateVolunteers/:volunteer_id',(req, res) => {
+    const volunteer_id = req.params.volunteer_id;
+    let sql = `Select * from volunteers where id = ${volunteer_id}`;
+    let query = connection.query(sql,(err, result) => {
+        if(err) throw err;
+        res.render('update_volunteers', {
+            title : 'Opdater Frivillig Pirat Medlem!',
+            user : result[0]
+        });
+    });
+});
+
+
+app.post('/updateVolunteer',(req, res) => {
+    const volunteer_id = req.body.id;
+    let sql = "update volunteers SET volunteer_first_name='"+req.body.volunteer_first_name+"',  volunteer_last_name='"+req.body.volunteer_last_name+"',  volunteer_telephone='"+req.body.volunteer_telephone+"', volunteer_email='"+req.body.volunteer_email+"', volunteer_password='"+req.body.volunteer_password+"' where id ="+volunteer_id;
+    let query = connection.query(sql,(err, results) => {
+        if(err) throw err;
+        res.redirect('/volunteers_page');
+    });
+});
+
+
 
 app.listen(port, () => {
     console.log("Server is running on port: ", port)
