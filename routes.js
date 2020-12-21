@@ -328,3 +328,8 @@ app.listen(port, () => {
     console.log("Server is running on port: ", port)
 });
 
+app.get('/ajax', (req, res) => {
+    if (req.session.loggedin) {
+        res.sendFile(__dirname + '/frontend/ajax.html') 
+    }
+})
