@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajax Demo</title>
+<div align="center">
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
 
-        $(document).ready(function () {
-
             $.ajax({
                 method: "GET",
-    url: "https://moviesfrontandback.herokuapp.com/api/movies/"
-    }).done(function( data ) {
-    for(var i = 0; i < data.length; i++) {
-    $('#content').append(data[i].releaseYear+ data[i].genre + '<br>')
-}
-});
+                url: "https://moviesfrontandback.herokuapp.com/api/movies/"
+            }).done(function( data ) {
+                for(var i = 0; i < data.length; i++) {
+                    $('#content').append( "Movie: " +data[i].title+ "  Release year:  " + data[i].releaseYear+
+                        " Director:  " + data[i].director+ " Genre  " + data[i].genre + '<br><br>')
+                }
+            });
 
-})
     </script>
 
 </head>
@@ -26,11 +27,11 @@
 
 <div class="container">
 
-    <h1>Pirate favorit movies!</h1>
+    <h1>Pirate Favorite Movies</h1>
     <div id="content">
         <p type="text" id="inp">
     </div>
-
+</div>
 </div>
 </body>
 </html>
